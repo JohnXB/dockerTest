@@ -1,0 +1,31 @@
+<h1>登陆</h1>
+<% if flash[:danger] %>
+  <p><%= flash[:danger] %></p>
+<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for :session, url: login_url, method: :post do |f| %>
+
+      <p>
+        <%= f.label :名字 %>
+        <%= f.text_field :name, class: "form-control", placeholder: "input your name or email" %>
+
+      </p>
+      <p>
+        <%= f.label :密码 %>
+        <%= f.password_field :password, class: "form-control" %>
+
+      </p>
+      <p>
+        <%= f.label :remeber_me, class: "checkbox inline" do %>
+          <%= f.check_box :remeber_me %>
+          <span>记住我</span>
+        <% end -%>
+      </p>
+
+
+      <%= f.submit "Log in", class: "btn-primary" %>
+    <% end -%>
+    <p>新用户?<%= link_to '注册用户', new_user_path %></p>
+  </div>
+</div>

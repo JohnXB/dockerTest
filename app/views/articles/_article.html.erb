@@ -1,0 +1,11 @@
+
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to '查看', user_article_path(article) %></td>
+      <td><%= link_to '编辑', edit_user_article_path(article) %></td>
+      <td><%= link_to '删除', [article.user, article],
+                      method: :delete,
+                      data: { confirm: '确定删除?' } %></td>
+    </tr>
+

@@ -1,0 +1,27 @@
+version: '2'
+
+
+services:
+  railsapp:
+    build: .
+    container_name: blog-app
+    restart: unless-stopped
+    user: root
+    links: 
+      - mysql
+    environment:
+      - MYSQL_URL=mysql
+      - SQL_USER=root
+      - SQL_PASS=526113
+    ports:
+      - '3000:3000/tcp'
+    command: 'rails s'
+
+  mysql:
+    image: mysql:5.7
+    restart: unless-stopped
+    user: root
+    ports:
+      - '3307:3306/tcp'
+    environment:
+      - MYSQL_ROOT_PASSWORD=526113

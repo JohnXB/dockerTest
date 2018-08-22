@@ -1,0 +1,30 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        注册失败:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :名字 %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :密码 %><br>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :密码确认 %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.submit :保存 %>
+  </p>
+<% end %>
